@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: logos
+    name: Logos front
     env: node
     plan: starter
     buildCommand: yarn; yarn build

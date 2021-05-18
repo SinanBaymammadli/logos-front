@@ -1,6 +1,22 @@
+import { GetStaticProps } from "next";
 import Head from "next/head";
+import { Book, getAllBooks } from "../data/book";
 
-export default function Home() {
+interface Props {
+  books: Book[];
+}
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const books = await getAllBooks();
+
+  return {
+    props: {
+      books,
+    },
+  };
+};
+
+export default function Home({ books }: Props) {
   return (
     <div>
       <Head>
@@ -11,6 +27,16 @@ export default function Home() {
 
       <main>
         <h1>Logos</h1>
+
+        {books.map((book) => {
+          return (
+            <div>
+              <h2>{book.title}</h2>
+              <h2>{book.description}</h2>
+              <h2>{book.price}AZN</h2>
+            </div>
+          );
+        })}
       </main>
     </div>
   );
