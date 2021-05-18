@@ -15,10 +15,10 @@ export function Header() {
         <Text>Logos</Text>
 
         <Stack direction={"row"} spacing={6}>
-          <Link href={"#"}>Home</Link>
-          <Link href={"#"}>About</Link>
-          <Link href={"#"}>Blog</Link>
-          <Link href={"#"}>Contact</Link>
+          <Link href="/">Home</Link>
+          <Link href="#about">About</Link>
+          <Link href="#blog">Blog</Link>
+          <Link href="#contact">Contact</Link>
         </Stack>
       </Container>
     </Box>
