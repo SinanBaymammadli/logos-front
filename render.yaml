@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: next-js
+    name: logos
     env: node
     plan: starter
     buildCommand: yarn; yarn build
