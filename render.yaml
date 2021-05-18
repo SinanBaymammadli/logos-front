@@ -3,8 +3,8 @@ services:
     name: logos
     env: node
     plan: starter
-    buildCommand: yarn; yarn build
-    startCommand: yarn start
+    buildCommand: npm i; npm run build
+    startCommand: npm start
     envVars:
       - key: NODE_ENV
         value: production
