@@ -2,6 +2,7 @@ import redaxios from "redaxios";
 import { BASE_URL } from "./core";
 
 export interface Book {
+  id: number;
   title: string;
   price: number;
   description: string;
