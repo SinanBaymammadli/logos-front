@@ -2,7 +2,7 @@ import { Box, useColorModeValue, Container, Stack, Text, Link } from "@chakra-ui
 
 export function Header() {
   return (
-    <Box bg={useColorModeValue("gray.50", "gray.900")} color={useColorModeValue("gray.700", "gray.200")}>
+    <Box borderBottom="1px" borderColor="gray.200">
       <Container
         as={Stack}
         maxW={"6xl"}
@@ -12,13 +12,16 @@ export function Header() {
         justify={{ base: "center", md: "space-between" }}
         align={{ base: "center", md: "center" }}
       >
-        <Text>Logos</Text>
+        <Link href="/">
+          <img src="/logo.png" style={{ height: 60 }} />
+        </Link>
 
         <Stack direction={"row"} spacing={6}>
-          <Link href="/">Home</Link>
-          <Link href="#about">About</Link>
-          <Link href="#blog">Blog</Link>
-          <Link href="#contact">Contact</Link>
+          <Link href="/">Ana səhifə</Link>
+          <Link href="/about">Haqqımızda</Link>
+          <Link href="/posts">Bloq</Link>
+          <Link href="/faq">FAQ</Link>
+          <Link href="/contact">Contact</Link>
         </Stack>
       </Container>
     </Box>
