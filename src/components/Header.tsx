@@ -21,7 +21,7 @@ export function Header() {
           <Link href="/about">Haqqımızda</Link>
           <Link href="/posts">Bloq</Link>
           <Link href="/faq">FAQ</Link>
-          <Link href="/contact">Contact</Link>
+          <Link href="/contact">Əlaqə</Link>
         </Stack>
       </Container>
     </Box>

@@ -1,7 +1,9 @@
-import { Flex, Box } from "@chakra-ui/react";
 import { Book } from "../data/book";
 import { getFileUrl } from "../data/image";
 import Link from "next/link";
+import React from "react";
+import { Price } from "./Price";
+import { Heading } from "@chakra-ui/layout";
 
 interface RatingProps {
   rating: number;
@@ -12,14 +14,13 @@ export function BookCard({ book }: { book: Book }) {
   return (
     <Link href={`/books/${book.id}`}>
       <a>
-        <img src={getFileUrl(book.cover_image.formats.thumbnail.url)} width="100%" />
+        <img src={getFileUrl(book.cover_image.formats.thumbnail.url)} width="100%" style={{ aspectRatio: "0.69" }} />
 
-        <h3>{book.title}</h3>
+        <Heading size="sm" fontWeight="normal" pt="2" pb="1">
+          {book.title}
+        </Heading>
 
-        <Flex>
-          <Box fontSize="lg">₼</Box>
-          {book.price.toFixed(2)}
-        </Flex>
+        <Price amount={book.price} />
       </a>
     </Link>
   );
