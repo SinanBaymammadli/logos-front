@@ -15,8 +15,7 @@ export interface Book {
   detail_images: Array<Image>;
   isbn: string;
   level: Level;
-  from_lang: Language;
-  to_lang: Language;
+  lang: Language;
   author: Author;
   categories: Array<Category>;
 }
