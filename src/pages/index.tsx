@@ -1,7 +1,7 @@
 import { GetStaticProps } from "next";
 import { Book, getAllBooks } from "../data/book";
 import { BookCard } from "../components/BookCard";
-import { Input, Container, SimpleGrid, Flex, Select, Box } from "@chakra-ui/react";
+import { Input, Container, SimpleGrid, Flex, Select, Box, Center } from "@chakra-ui/react";
 import React from "react";
 import { Language, Languages } from "../data/languages";
 import { useRouter } from "next/router";
@@ -101,15 +101,17 @@ export default function Home({ books }: Props) {
           </Box>
         </Flex>
 
-        <SimpleGrid columns={[2, 3, 4, 5]} spacing="40px" py="10">
+        <Box py="10">
           {filteredBooks.length > 0 ? (
-            filteredBooks.map((book) => {
-              return <BookCard key={book.id} book={book} />;
-            })
+            <SimpleGrid columns={[2, 3, 4, 5]} spacing="40px">
+              {filteredBooks.map((book) => {
+                return <BookCard key={book.id} book={book} />;
+              })}
+            </SimpleGrid>
           ) : (
-            <div>Empty</div>
+            <Center>Kitab yoxdur.</Center>
           )}
-        </SimpleGrid>
+        </Box>
       </Container>
     </main>
   );
