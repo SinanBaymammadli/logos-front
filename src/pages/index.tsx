@@ -109,7 +109,7 @@ export default function Home({ books }: Props) {
               })}
             </SimpleGrid>
           ) : (
-            <Center>Kitab yoxdur.</Center>
+            <Center>Kitab tapılmadı.</Center>
           )}
         </Box>
       </Container>
