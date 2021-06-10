@@ -1,6 +1,5 @@
-import { Box, Button, Container, Flex, Heading, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, Button, Container, Flex, Heading, Text } from "@chakra-ui/react";
 import { GetStaticPaths, GetStaticProps } from "next";
-import Image from "next/image";
 import React from "react";
 import { Price } from "../../components/Price";
 import { Book, getAllBooks, getBook } from "../../data/book";
@@ -36,10 +35,11 @@ export default function BookDetail({ book }: Props) {
     <Container maxW="6xl" py="10">
       <Flex flexDirection={["column", "column", "row"]}>
         <Flex justifyContent="center" pb={["5", "5", 0]}>
-          <Image
+          <img
             src={getFileUrl(book.cover_image.url)}
             width={book.cover_image.width}
             height={book.cover_image.height}
+            style={{ aspectRatio: "0.649", minWidth: 288, maxWidth: 320 }}
           />
         </Flex>
         <Box pr="10" />
@@ -65,12 +65,6 @@ export default function BookDetail({ book }: Props) {
           <Text>{book.description}</Text>
         </div>
       </Flex>
-
-      {/* <SimpleGrid columns={5} spacing="40px" py="10">
-          {books.map((book) => {
-            return <BookCard key={book.id} book={book} />;
-          })}
-        </SimpleGrid> */}
     </Container>
   );
 }
