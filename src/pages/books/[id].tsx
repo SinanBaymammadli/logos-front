@@ -1,10 +1,11 @@
 import { Box, Button, Container, Flex, Heading, SimpleGrid, Text } from "@chakra-ui/react";
 import { GetStaticPaths, GetStaticProps } from "next";
+import Image from "next/image";
 import React from "react";
 import { Price } from "../../components/Price";
 import { Book, getAllBooks, getBook } from "../../data/book";
 import { getFileUrl } from "../../data/image";
-import { MdBuild, MdCall } from "react-icons/md";
+import { MdCall } from "react-icons/md";
 
 interface Props {
   book: Book;
@@ -35,7 +36,11 @@ export default function BookDetail({ book }: Props) {
     <Container maxW="6xl" py="10">
       <Flex flexDirection={["column", "column", "row"]}>
         <Flex justifyContent="center" pb={["5", "5", 0]}>
-          <img src={getFileUrl(book.cover_image.url)} width={book.cover_image.width} height={book.cover_image.height} />
+          <Image
+            src={getFileUrl(book.cover_image.url)}
+            width={book.cover_image.width}
+            height={book.cover_image.height}
+          />
         </Flex>
         <Box pr="10" />
         <div>

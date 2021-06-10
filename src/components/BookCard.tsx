@@ -1,20 +1,16 @@
 import { Book } from "../data/book";
 import { getFileUrl } from "../data/image";
 import Link from "next/link";
+import Image from "next/image";
 import React from "react";
 import { Price } from "./Price";
 import { Heading } from "@chakra-ui/layout";
-
-interface RatingProps {
-  rating: number;
-  numReviews: number;
-}
 
 export function BookCard({ book }: { book: Book }) {
   return (
     <Link href={`/books/${book.id}`}>
       <a>
-        <img src={getFileUrl(book.cover_image.formats.thumbnail.url)} width="100%" style={{ aspectRatio: "0.69" }} />
+        <Image src={getFileUrl(book.cover_image.url)} width={book.cover_image.width} height={book.cover_image.height} />
 
         <Heading size="sm" fontWeight="normal" pt="2" pb="1">
           {book.title}
