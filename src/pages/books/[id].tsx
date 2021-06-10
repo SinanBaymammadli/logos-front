@@ -40,6 +40,7 @@ export default function BookDetail({ book }: Props) {
             width={book.cover_image.width}
             height={book.cover_image.height}
             style={{ aspectRatio: "0.649", minWidth: 288, maxWidth: 320 }}
+            loading="lazy"
           />
         </Flex>
         <Box pr="10" />

@@ -14,6 +14,7 @@ export function BookCard({ book }: { book: Book }) {
           width={book.cover_image.width}
           height={book.cover_image.height}
           style={{ aspectRatio: "0.649" }}
+          loading="lazy"
         />
 
         <Heading size="sm" fontWeight="normal" pt="2" pb="1">
