@@ -1,8 +1,14 @@
 import { Box, chakra, Container, Stack, Text, useColorModeValue, VisuallyHidden } from "@chakra-ui/react";
-import { FaInstagram, FaTwitter, FaYoutube } from "react-icons/fa";
+import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
 import { ReactNode } from "react";
 
-const SocialButton = ({ children, label, href }: { children: ReactNode; label: string; href: string }) => {
+interface SocialButtonProps {
+  label: string;
+  href: string;
+  children: ReactNode;
+}
+
+function SocialButton({ children, label, href }: SocialButtonProps) {
   return (
     <chakra.button
       bg={useColorModeValue("blackAlpha.100", "whiteAlpha.100")}
@@ -12,6 +18,8 @@ const SocialButton = ({ children, label, href }: { children: ReactNode; label: s
       cursor={"pointer"}
       as={"a"}
       href={href}
+      target="_blank"
+      rel="noopener noreferrer"
       display={"inline-flex"}
       alignItems={"center"}
       justifyContent={"center"}
@@ -24,7 +32,7 @@ const SocialButton = ({ children, label, href }: { children: ReactNode; label: s
       {children}
     </chakra.button>
   );
-};
+}
 
 const YEAR = new Date().getFullYear();
 
@@ -41,15 +49,15 @@ export function Footer() {
         align={{ base: "center", md: "center" }}
       >
         <Text>© {YEAR} Logos Nəşriyyat</Text>
-        <Stack direction={"row"} spacing={6}>
-          <SocialButton label={"Twitter"} href={"#"}>
-            <FaTwitter />
-          </SocialButton>
-          <SocialButton label={"YouTube"} href={"#"}>
-            <FaYoutube />
-          </SocialButton>
-          <SocialButton label={"Instagram"} href={"#"}>
+        <Stack direction="row" spacing={6}>
+          <SocialButton label="Instagram" href="https://www.instagram.com/logosnesriyyati/">
             <FaInstagram />
+          </SocialButton>
+          <SocialButton label="Facebook" href="https://www.facebook.com/logosnesriyyati/">
+            <FaFacebook />
+          </SocialButton>
+          <SocialButton label="Linkedin" href="https://www.linkedin.com/company/logosnesriyyati/">
+            <FaLinkedin />
           </SocialButton>
         </Stack>
       </Container>
