@@ -1,14 +1,14 @@
 import { Book } from "../data/book";
 import { getFileUrl } from "../data/image";
-import Link from "next/link";
+import NextLink from "next/link";
 import React from "react";
 import { Price } from "./Price";
-import { Heading } from "@chakra-ui/layout";
+import { Heading, Link } from "@chakra-ui/react";
 
 export function BookCard({ book }: { book: Book }) {
   return (
-    <Link href={`/books/${book.id}`}>
-      <a>
+    <NextLink href={`/books/${book.id}`}>
+      <Link>
         <img
           src={getFileUrl(book.cover_image.url)}
           width={book.cover_image.width}
@@ -22,7 +22,7 @@ export function BookCard({ book }: { book: Book }) {
         </Heading>
 
         <Price amount={book.price} />
-      </a>
-    </Link>
+      </Link>
+    </NextLink>
   );
 }

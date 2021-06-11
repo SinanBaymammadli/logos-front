@@ -3,8 +3,10 @@ import React from "react";
 
 export function Price({ amount }: { amount: number }) {
   return (
-    <Flex alignItems="center">
-      <Box fontSize="lg">₼</Box>
+    <Flex alignItems="center" style={{ textDecoration: "none" }}>
+      <Box fontSize="lg" pr="1">
+        ₼
+      </Box>
       {amount.toFixed(2)}
     </Flex>
   );
