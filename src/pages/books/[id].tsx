@@ -4,7 +4,7 @@ import React from "react";
 import { Price } from "../../components/Price";
 import { Book, getAllBooks, getBook } from "../../data/book";
 import { getFileUrl } from "../../data/image";
-import { MdCall } from "react-icons/md";
+import { FaWhatsapp } from "react-icons/fa";
 
 interface Props {
   book: Book;
@@ -31,6 +31,12 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export default function BookDetail({ book }: Props) {
+  const [currentUrl, setCurrentUrl] = React.useState("");
+
+  React.useEffect(() => {
+    setCurrentUrl(window?.location?.href);
+  }, []);
+
   return (
     <Container maxW="6xl" py="10">
       <Flex flexDirection={["column", "column", "row"]}>
@@ -52,7 +58,12 @@ export default function BookDetail({ book }: Props) {
               <Price amount={book.price} />
             </Heading>
 
-            <Button leftIcon={<MdCall />} colorScheme="green">
+            <Button
+              as="a"
+              leftIcon={<FaWhatsapp />}
+              colorScheme="green"
+              href={`https://api.whatsapp.com/send?phone=+994554169939&text=Salam, bu kitabı sifariş vermək istəyirdim ${currentUrl}`}
+            >
               Sifariş ver
             </Button>
           </Flex>
