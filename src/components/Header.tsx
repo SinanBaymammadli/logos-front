@@ -1,28 +1,29 @@
-import { Box, useColorModeValue, Container, Stack, Text, Link } from "@chakra-ui/react";
+import { Box, Container, Stack, Link, Flex } from "@chakra-ui/react";
 
 export function Header() {
   return (
     <Box borderBottom="1px" borderColor="gray.200">
-      <Container
-        as={Stack}
-        maxW={"6xl"}
-        py={4}
-        direction={{ base: "column", md: "row" }}
-        spacing={4}
-        justify={{ base: "center", md: "space-between" }}
-        align={{ base: "center", md: "center" }}
-      >
-        <Link href="/">
-          <img src="/logo.png" style={{ height: 60 }} />
-        </Link>
+      <Container maxW={"6xl"} py={4}>
+        <Flex
+          direction={{ base: "column", md: "row" }}
+          justify={{ base: "center", md: "space-between" }}
+          align={{ base: "center", md: "center" }}
+          style={{ gap: 16 }}
+        >
+          <Link href="/">
+            <img src="/logo.jpeg" style={{ height: 60 }} loading="lazy" />
+          </Link>
 
-        <Stack direction={"row"} spacing={6}>
-          <Link href="/">Ana səhifə</Link>
-          <Link href="/about">Haqqımızda</Link>
-          <Link href="/posts">Bloq</Link>
-          <Link href="/faq">FAQ</Link>
-          <Link href="/contact">Əlaqə</Link>
-        </Stack>
+          <Flex style={{ gap: 24 }}>
+            <Link href="/" display={["none", "block"]}>
+              Ana səhifə
+            </Link>
+            <Link href="/about">Haqqımızda</Link>
+            <Link href="/posts">Bloq</Link>
+            <Link href="/faq">FAQ</Link>
+            <Link href="/contact">Əlaqə</Link>
+          </Flex>
+        </Flex>
       </Container>
     </Box>
   );
