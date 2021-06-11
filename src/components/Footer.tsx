@@ -1,6 +1,7 @@
 import { Box, chakra, Container, Stack, Text, useColorModeValue, VisuallyHidden } from "@chakra-ui/react";
 import { FaInstagram, FaFacebook, FaLinkedin } from "react-icons/fa";
 import { ReactNode } from "react";
+import { FACEBOOK_LINK, INSTAGRAM_LINK, LINKEDIN_LINK } from "../data/constants";
 
 interface SocialButtonProps {
   label: string;
@@ -50,13 +51,13 @@ export function Footer() {
       >
         <Text>© {YEAR} Logos Nəşriyyat</Text>
         <Stack direction="row" spacing={6}>
-          <SocialButton label="Instagram" href="https://www.instagram.com/logosnesriyyati/">
+          <SocialButton label="Instagram" href={INSTAGRAM_LINK}>
             <FaInstagram />
           </SocialButton>
-          <SocialButton label="Facebook" href="https://www.facebook.com/logosnesriyyati/">
+          <SocialButton label="Facebook" href={FACEBOOK_LINK}>
             <FaFacebook />
           </SocialButton>
-          <SocialButton label="Linkedin" href="https://www.linkedin.com/company/logosnesriyyati/">
+          <SocialButton label="Linkedin" href={LINKEDIN_LINK}>
             <FaLinkedin />
           </SocialButton>
         </Stack>

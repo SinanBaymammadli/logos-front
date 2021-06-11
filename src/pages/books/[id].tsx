@@ -5,6 +5,7 @@ import { Price } from "../../components/Price";
 import { Book, getAllBooks, getBook } from "../../data/book";
 import { getFileUrl } from "../../data/image";
 import { FaWhatsapp } from "react-icons/fa";
+import { PHONE_NUMBER } from "../../data/constants";
 
 interface Props {
   book: Book;
@@ -62,7 +63,7 @@ export default function BookDetail({ book }: Props) {
               as="a"
               leftIcon={<FaWhatsapp />}
               colorScheme="green"
-              href={`https://api.whatsapp.com/send?phone=+994554169939&text=Salam, bu kitabı sifariş vermək istəyirdim ${currentUrl}`}
+              href={`https://api.whatsapp.com/send?phone=${PHONE_NUMBER}&text=Salam, bu kitabı sifariş vermək istəyirdim ${currentUrl}`}
             >
               Sifariş ver
             </Button>
