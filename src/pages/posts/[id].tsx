@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-  const post = await getPost(params.id.toString());
+  const post = await getPost(params?.id?.toString() ?? "1");
 
   return {
     props: {

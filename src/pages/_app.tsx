@@ -3,7 +3,7 @@ import { ChakraProvider, Flex, Box } from "@chakra-ui/react";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 
-function MyApp({ Component, pageProps }) {
+function MyApp({ Component, pageProps }: { Component: any; pageProps: any }) {
   return (
     <>
       <Head>

@@ -1,4 +1,18 @@
-import { Box, Button, Container, Flex, Heading, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Container,
+  Flex,
+  Heading,
+  Modal,
+  ModalBody,
+  ModalCloseButton,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  ModalOverlay,
+  Text,
+} from "@chakra-ui/react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import React from "react";
 import { Price } from "../../components/Price";
@@ -12,7 +26,7 @@ interface Props {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-  const book = await getBook(params.id.toString());
+  const book = await getBook(params?.id?.toString() ?? "1");
 
   return {
     props: {
@@ -38,17 +52,39 @@ export default function BookDetail({ book }: Props) {
     setCurrentUrl(window?.location?.href);
   }, []);
 
+  const [selectedImgId, setSelectedImgId] = React.useState(0);
+  const selectedImg = book.detail_images.find((img) => img.id === selectedImgId);
+
   return (
     <Container maxW="6xl" py="10">
       <Flex flexDirection={["column", "column", "row"]}>
-        <Flex justifyContent="center" pb={["5", "5", 0]}>
-          <img
-            src={getFileUrl(book.cover_image.url)}
-            width={book.cover_image.width}
-            height={book.cover_image.height}
-            style={{ aspectRatio: "0.649", minWidth: 288, maxWidth: 320 }}
-            loading="lazy"
-          />
+        <Flex pb={["5", "5", 0]} direction="column" style={{ gap: 24 }}>
+          <Flex justifyContent="center" bg="black">
+            <img
+              src={getFileUrl(book.cover_image.url)}
+              width={book.cover_image.width}
+              height={book.cover_image.height}
+              style={{ aspectRatio: "0.649", minWidth: 288, maxWidth: 320 }}
+              loading="lazy"
+            />
+          </Flex>
+          {book.detail_images.length > 0 ? (
+            <Flex justifyContent="space-between" style={{ gap: 4 }}>
+              {book.detail_images.map((img) => {
+                return (
+                  <button key={img.id} onClick={() => setSelectedImgId(img.id)}>
+                    <img
+                      src={getFileUrl(img.formats.thumbnail.url)}
+                      width={img.formats.thumbnail.width}
+                      height={img.formats.thumbnail.height}
+                      loading="lazy"
+                      style={{ maxWidth: 100 }}
+                    />
+                  </button>
+                );
+              })}
+            </Flex>
+          ) : null}
         </Flex>
         <Box pr="10" />
         <div>
@@ -78,6 +114,23 @@ export default function BookDetail({ book }: Props) {
           <Text>{book.description}</Text>
         </div>
       </Flex>
+
+      <Modal onClose={() => setSelectedImgId(0)} size="3xl" isOpen={selectedImgId !== 0}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalBody p="0">
+            <ModalCloseButton />
+            {selectedImg ? (
+              <img
+                src={getFileUrl(selectedImg?.url)}
+                width={selectedImg?.width}
+                height={selectedImg?.height}
+                loading="lazy"
+              />
+            ) : null}
+          </ModalBody>
+        </ModalContent>
+      </Modal>
     </Container>
   );
 }
