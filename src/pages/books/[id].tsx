@@ -69,7 +69,7 @@ export default function BookDetail({ book }: Props) {
             />
           </Flex>
           {book.detail_images.length > 0 ? (
-            <Flex justifyContent="space-between" style={{ gap: 4 }}>
+            <Flex style={{ gap: 4 }}>
               {book.detail_images.map((img) => {
                 return (
                   <button key={img.id} onClick={() => setSelectedImgId(img.id)}>
