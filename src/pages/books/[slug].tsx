@@ -42,11 +42,24 @@ export default function BookDetail({ book }: Props) {
 
   const renderImages = (): React.ReactChild[] => {
     return [
-      <img key="main-img" src={getFileUrl(book.cover_image.url)} loading="lazy" />,
+      <img
+        key="main-img"
+        src={getFileUrl(book.cover_image.url)}
+        loading="lazy"
+        width={book.cover_image.width}
+        height={book.cover_image.height}
+        style={{ maxHeight: 600, width: "auto" }}
+      />,
       ...book.detail_images.map((img) => {
         return (
           <div key={img.id}>
-            <img src={getFileUrl(img.url)} loading="lazy" />
+            <img
+              src={getFileUrl(img.url)}
+              width={book.cover_image.width}
+              height={book.cover_image.height}
+              loading="lazy"
+              style={{ maxHeight: 600, width: "auto" }}
+            />
           </div>
         );
       }),
@@ -56,8 +69,8 @@ export default function BookDetail({ book }: Props) {
   return (
     <Container maxW="6xl" py="10">
       <Flex flexDirection={["column", "column", "row"]}>
-        <Box bg="black" maxW={["auto", "auto", "360px"]}>
-          <Carousel className="book-carousel" infiniteLoop useKeyboardArrows swipeable={false}>
+        <Box bg="black" maxW={["auto", "auto", "360px"]} minH={["505px", "660px"]}>
+          <Carousel className="book-carousel" infiniteLoop swipeable={false}>
             {renderImages()}
           </Carousel>
         </Box>

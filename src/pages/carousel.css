@@ -1,6 +1,7 @@
 .book-carousel .slide {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .book-carousel .thumb {
