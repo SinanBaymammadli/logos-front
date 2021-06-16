@@ -9,6 +9,7 @@ import { Category } from "./category";
 export interface Book {
   id: number;
   title: string;
+  slug: string;
   price: number;
   description: string;
   cover_image: Image;
@@ -25,7 +26,7 @@ export async function getAllBooks(): Promise<Book[]> {
   return res.data;
 }
 
-export async function getBook(id: string): Promise<Book> {
-  const res = await redaxios.get<any>(`${BASE_URL}/books/${id}`);
-  return res.data;
+export async function getBook(slug: string): Promise<Book> {
+  const res = await redaxios.get<any>(`${BASE_URL}/books?slug=${slug}`);
+  return res.data[0];
 }

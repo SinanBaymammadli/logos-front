@@ -4,6 +4,7 @@ import { BASE_URL } from "./core";
 export interface Post {
   id: number;
   title: string;
+  slug: string;
   content: string;
 }
 
@@ -12,7 +13,7 @@ export async function getAllPosts(): Promise<Post[]> {
   return res.data;
 }
 
-export async function getPost(id: string): Promise<Post> {
-  const res = await redaxios.get<any>(`${BASE_URL}/posts/${id}`);
-  return res.data;
+export async function getPost(slug: string): Promise<Post> {
+  const res = await redaxios.get<any>(`${BASE_URL}/posts?slug=${slug}`);
+  return res.data[0];
 }

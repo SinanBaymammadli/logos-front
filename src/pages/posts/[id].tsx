@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-  const post = await getPost(params?.id?.toString() ?? "1");
+  const post = await getPost(params?.slug?.toString() ?? "1");
 
   return {
     props: {
@@ -21,7 +21,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const posts = await getAllPosts();
 
   const paths = posts.map((post) => ({
-    params: { id: post.id.toString() },
+    params: { slug: post.slug.toString() },
   }));
 
   return { paths, fallback: false };

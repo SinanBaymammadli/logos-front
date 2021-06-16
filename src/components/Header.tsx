@@ -1,4 +1,5 @@
-import { Box, Container, Stack, Link, Flex } from "@chakra-ui/react";
+import NextLink from "next/link";
+import { Box, Container, Link, Flex } from "@chakra-ui/react";
 
 export function Header() {
   return (
@@ -10,18 +11,28 @@ export function Header() {
           align={{ base: "center", md: "center" }}
           style={{ gap: 16 }}
         >
-          <Link href="/">
-            <img src="/logo.jpeg" height={60} width={66} style={{ height: 60 }} loading="lazy" />
-          </Link>
+          <NextLink href="/" passHref>
+            <Link>
+              <img src="/logo.jpeg" height={60} width={66} style={{ height: 60 }} loading="lazy" />
+            </Link>
+          </NextLink>
 
           <Flex style={{ gap: 24 }}>
-            <Link href="/" display={["none", "block"]}>
-              Ana səhifə
-            </Link>
-            <Link href="/about">Haqqımızda</Link>
-            <Link href="/posts">Bloq</Link>
-            <Link href="/faq">FAQ</Link>
-            <Link href="/contact">Əlaqə</Link>
+            <NextLink href="/" passHref>
+              <Link display={["none", "block"]}>Ana səhifə</Link>
+            </NextLink>
+            <NextLink href="/about" passHref>
+              <Link>Haqqımızda</Link>
+            </NextLink>
+            <NextLink href="/posts" passHref>
+              <Link>Bloq</Link>
+            </NextLink>
+            <NextLink href="/faq" passHref>
+              <Link>FAQ</Link>
+            </NextLink>
+            <NextLink href="/contact" passHref>
+              <Link>Əlaqə</Link>
+            </NextLink>
           </Flex>
         </Flex>
       </Container>

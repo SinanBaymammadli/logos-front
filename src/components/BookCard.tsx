@@ -7,7 +7,7 @@ import { Heading, Link } from "@chakra-ui/react";
 
 export function BookCard({ book }: { book: Book }) {
   return (
-    <NextLink href={`/books/${book.id}`}>
+    <NextLink href={`/books/${book.slug}`} passHref>
       <Link>
         <img
           src={getFileUrl(book.cover_image.url)}

@@ -14,7 +14,7 @@ interface Props {
 }
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
-  const book = await getBook(params?.id?.toString() ?? "1");
+  const book = await getBook(params?.slug?.toString() ?? "1");
 
   return {
     props: {
@@ -27,7 +27,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const books = await getAllBooks();
 
   const paths = books.map((book) => ({
-    params: { id: book.id.toString() },
+    params: { slug: book.slug.toString() },
   }));
 
   return { paths, fallback: false };

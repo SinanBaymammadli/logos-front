@@ -1,6 +1,6 @@
-import { Container, Heading, SimpleGrid, Text } from "@chakra-ui/react";
+import { Container, Heading, SimpleGrid, Text, Link } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
-import Link from "next/link";
+import NextLink from "next/link";
 import React from "react";
 import { getAllPosts, Post } from "../../data/posts";
 import truncate from "lodash/truncate";
@@ -27,14 +27,14 @@ export default function Posts({ posts }: Props) {
       <SimpleGrid columns={[1, 1, 2]} spacing="40px">
         {posts.map((post) => {
           return (
-            <Link key={post.id} href={`/posts/${post.id}`}>
-              <a>
+            <NextLink key={post.id} href={`/posts/${post.slug}`} passHref>
+              <Link>
                 <Heading size="md" py="2">
                   {post.title}
                 </Heading>
                 <Text>{truncate(post.content, { length: 100 })}</Text>
-              </a>
-            </Link>
+              </Link>
+            </NextLink>
           );
         })}
       </SimpleGrid>
