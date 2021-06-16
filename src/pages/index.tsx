@@ -41,8 +41,6 @@ export default function Home({ books }: Props) {
       return book.level === level;
     });
 
-  console.log(languageToLevel(lang));
-
   return (
     <main>
       <Container maxW="6xl">

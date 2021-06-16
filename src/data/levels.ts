@@ -17,7 +17,6 @@ export function languageToLevel(language: Language) {
   const baseLang = language.split("-")[0].trim().toLocaleLowerCase("az");
 
   if (baseLang === "ingiliscə") {
-    console.log(EnglishLevels);
     return EnglishLevels;
   }
   if (baseLang === "rusca") {

@@ -1,3 +1,4 @@
+import "./carousel.css";
 import Head from "next/head";
 import { ChakraProvider, Flex, Box } from "@chakra-ui/react";
 import { Footer } from "../components/Footer";

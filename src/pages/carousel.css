@@ -1,0 +1,8 @@
+.book-carousel .slide {
+  display: flex;
+  justify-content: center;
+}
+
+.book-carousel .thumb {
+  height: 60px;
+}
