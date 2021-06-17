@@ -1,8 +1,12 @@
 import "./carousel.css";
+import "dayjs/locale/az";
 import Head from "next/head";
 import { ChakraProvider, Flex, Box } from "@chakra-ui/react";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
+import dayjs from "dayjs";
+
+dayjs.locale("az");
 
 function MyApp({ Component, pageProps }: { Component: any; pageProps: any }) {
   return (

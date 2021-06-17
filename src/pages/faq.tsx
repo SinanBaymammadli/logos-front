@@ -23,8 +23,8 @@ export default function FAQ({ faqs }: Props) {
 
       {faqs.map((faq, index) => {
         return (
-          <Box key={faq.id} pb="5">
-            <Heading size="md" pb="1">
+          <Box key={faq.id} pb="8">
+            <Heading size="sm" pb="1">
               {index + 1}. {faq.question}
             </Heading>
             <Text fontSize="md">{faq.answer}</Text>

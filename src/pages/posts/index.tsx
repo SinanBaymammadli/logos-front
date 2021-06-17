@@ -1,9 +1,10 @@
-import { Container, Heading, SimpleGrid, Text, Link } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 import NextLink from "next/link";
+import { Container, Heading, SimpleGrid, Text, Link } from "@chakra-ui/react";
 import React from "react";
 import { getAllPosts, Post } from "../../data/posts";
-import truncate from "lodash/truncate";
+import dayjs from "dayjs";
+import { getFileUrl } from "../../data/image";
 
 interface Props {
   posts: Post[];
@@ -29,10 +30,18 @@ export default function Posts({ posts }: Props) {
           return (
             <NextLink key={post.id} href={`/posts/${post.slug}`} passHref>
               <Link>
+                <img
+                  src={getFileUrl(post.cover_image.url)}
+                  width={post.cover_image.width}
+                  height={post.cover_image.height}
+                  loading="lazy"
+                />
                 <Heading size="md" py="2">
                   {post.title}
                 </Heading>
-                <Text>{truncate(post.content, { length: 100 })}</Text>
+                <Text color="gray.600" fontSize="sm">
+                  {dayjs(post.published_at).format("DD MMMM YYYY")}
+                </Text>
               </Link>
             </NextLink>
           );

@@ -1,11 +1,14 @@
 import redaxios from "redaxios";
 import { BASE_URL } from "./core";
+import { Image } from "./image";
 
 export interface Post {
   id: number;
+  cover_image: Image;
   title: string;
   slug: string;
   content: string;
+  published_at: string;
 }
 
 export async function getAllPosts(): Promise<Post[]> {

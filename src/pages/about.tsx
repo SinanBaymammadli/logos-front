@@ -1,4 +1,4 @@
-import { Box, Container, Heading } from "@chakra-ui/react";
+import { Text, Container, Heading } from "@chakra-ui/react";
 import { GetStaticProps } from "next";
 import { About, getAbout } from "../data/about";
 import Markdown from "markdown-to-jsx";
@@ -23,7 +23,23 @@ export default function AboutPage({ about }: Props) {
     <Container maxW="6xl" py="10">
       <Heading pb="5">Haqqımızda</Heading>
 
-      <Markdown>{about.description}</Markdown>
+      <Markdown
+        options={{
+          overrides: {
+            h1: {
+              component: (props) => <Heading as="h1" size="xl" {...props} />,
+            },
+            p: {
+              component: (props) => <Text {...props} mb="4" />,
+            },
+            img: {
+              component: (props) => <img {...props} style={{ aspectRatio: "1000/667", width: "100%" }} />,
+            },
+          },
+        }}
+      >
+        {about.description}
+      </Markdown>
     </Container>
   );
 }

@@ -1,0 +1,3 @@
+1. add custom components for Markdown in posts and about
+2. change or fix carousel layout jump
+3. add cover img to post remove description overview add date
