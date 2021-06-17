@@ -69,7 +69,7 @@ export default function BookDetail({ book }: Props) {
   return (
     <Container maxW="6xl" py="10">
       <Flex flexDirection={["column", "column", "row"]}>
-        <Box bg="black" maxW={["auto", "auto", "360px"]} minH={["505px", "660px"]}>
+        <Box bg="black" w={["100%", "100%", "360px"]} minH={["505px", "660px"]}>
           <Carousel className="book-carousel" infiniteLoop swipeable={false}>
             {renderImages()}
           </Carousel>
@@ -77,7 +77,7 @@ export default function BookDetail({ book }: Props) {
 
         <Box pr="10" pb={[5, 5, 0]} />
 
-        <div>
+        <Box flex="1">
           <Heading pb="5">{book.title}</Heading>
 
           <Flex alignItems="center" pb="5">
@@ -102,7 +102,7 @@ export default function BookDetail({ book }: Props) {
             {book.author.name}
           </Heading>
           <Text>{book.description}</Text>
-        </div>
+        </Box>
       </Flex>
     </Container>
   );

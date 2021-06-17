@@ -7,3 +7,7 @@
 .book-carousel .thumb {
   height: 60px;
 }
+
+.book-carousel .slider-wrapper {
+  min-height: 554px;
+}
