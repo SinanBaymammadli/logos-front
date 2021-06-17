@@ -3,6 +3,7 @@ import { Box, Button, Container, Flex, Heading, Text } from "@chakra-ui/react";
 import { Carousel } from "react-responsive-carousel";
 import { GetStaticPaths, GetStaticProps } from "next";
 import React from "react";
+import Head from "next/head";
 import { Price } from "../../components/Price";
 import { Book, getAllBooks, getBook } from "../../data/book";
 import { getFileUrl } from "../../data/image";
@@ -67,43 +68,54 @@ export default function BookDetail({ book }: Props) {
   };
 
   return (
-    <Container maxW="6xl" py="10">
-      <Flex flexDirection={["column", "column", "row"]}>
-        <Box bg="black" w={["100%", "100%", "360px"]} minH={["505px", "660px"]}>
-          <Carousel className="book-carousel" infiniteLoop swipeable={false}>
-            {renderImages()}
-          </Carousel>
-        </Box>
+    <>
+      <Head>
+        <title>Logos Nəşriyyat | {book.title}</title>
+        <meta name="description" content={book.title} />
+        <meta property="og:title" content={book.title} />
+        <meta property="og:description" content={book.description} />
+        <meta property="og:image" content={getFileUrl(book.cover_image.url)} />
+        <meta property="og:url" content={currentUrl} />
+        <meta name="twitter:card" content={getFileUrl(book.cover_image.url)} />
+      </Head>
+      <Container maxW="6xl" py="10">
+        <Flex flexDirection={["column", "column", "row"]}>
+          <Box bg="black" w={["100%", "100%", "360px"]} minH={["505px", "660px"]}>
+            <Carousel className="book-carousel" infiniteLoop swipeable={false}>
+              {renderImages()}
+            </Carousel>
+          </Box>
 
-        <Box pr="10" pb={[5, 5, 0]} />
+          <Box pr="10" pb={[5, 5, 0]} />
 
-        <Box flex="1">
-          <Heading pb="5">{book.title}</Heading>
+          <Box flex="1">
+            <Heading pb="5">{book.title}</Heading>
 
-          <Flex alignItems="center" pb="5">
-            <Heading size="md" pr="5">
-              <Price amount={book.price} />
+            <Flex alignItems="center" pb="5">
+              <Heading size="md" pr="5">
+                <Price amount={book.price} />
+              </Heading>
+
+              <Button
+                as="a"
+                leftIcon={<FaWhatsapp />}
+                colorScheme="green"
+                href={`https://api.whatsapp.com/send?phone=${PHONE_NUMBER}&text=Salam, bu kitabı sifariş vermək istəyirdim ${currentUrl}`}
+              >
+                Sifariş ver
+              </Button>
+            </Flex>
+
+            <Heading size="sm" pb="5">
+              {book.lang} ({book.level})
             </Heading>
-
-            <Button
-              as="a"
-              leftIcon={<FaWhatsapp />}
-              colorScheme="green"
-              href={`https://api.whatsapp.com/send?phone=${PHONE_NUMBER}&text=Salam, bu kitabı sifariş vermək istəyirdim ${currentUrl}`}
-            >
-              Sifariş ver
-            </Button>
-          </Flex>
-
-          <Heading size="sm" pb="5">
-            {book.lang} ({book.level})
-          </Heading>
-          <Heading size="sm" pb="5">
-            {book.author.name}
-          </Heading>
-          <Text>{book.description}</Text>
-        </Box>
-      </Flex>
-    </Container>
+            <Heading size="sm" pb="5">
+              {book.author.name}
+            </Heading>
+            <Text>{book.description}</Text>
+          </Box>
+        </Flex>
+      </Container>
+    </>
   );
 }

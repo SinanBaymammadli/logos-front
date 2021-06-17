@@ -5,6 +5,7 @@ import { ChakraProvider, Flex, Box } from "@chakra-ui/react";
 import { Footer } from "../components/Footer";
 import { Header } from "../components/Header";
 import dayjs from "dayjs";
+import { SITE_DESCRIPTION, SITE_NAME } from "../data/constants";
 
 dayjs.locale("az");
 
@@ -12,10 +13,10 @@ function MyApp({ Component, pageProps }: { Component: any; pageProps: any }) {
   return (
     <>
       <Head>
-        <title>Logos Nəşriyyat</title>
+        <title>{SITE_NAME}</title>
 
         {/* general meta tags */}
-        <meta name="description" content="Logos Nəşriyyat" />
+        <meta name="description" content={SITE_DESCRIPTION} />
         {/* general meta tags */}
 
         {/* favicon */}
@@ -29,7 +30,10 @@ function MyApp({ Component, pageProps }: { Component: any; pageProps: any }) {
         {/* favicon */}
 
         {/* social network meta tag */}
-
+        <meta property="og:title" content={SITE_NAME} />
+        <meta property="og:description" content={SITE_DESCRIPTION} />
+        <meta property="og:image" content="/logo.jpeg" />
+        <meta name="twitter:card" content="/logo.jpeg" />
         {/* social network meta tag */}
       </Head>
 
