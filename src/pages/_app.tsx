@@ -13,10 +13,22 @@ function MyApp({ Component, pageProps }: { Component: any; pageProps: any }) {
   return (
     <>
       <Head>
-        <title>{SITE_NAME}</title>
-
         {/* general meta tags */}
+        <title>{SITE_NAME}</title>
+        <meta name="title" content={SITE_NAME} />
         <meta name="description" content={SITE_DESCRIPTION} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.logospublishing.az/" />
+        <meta property="og:title" content={SITE_NAME} />
+        <meta property="og:description" content={SITE_DESCRIPTION} />
+        <meta property="og:image" content="/logo.jpeg" />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:url" content="https://www.logospublishing.az/" />
+        <meta property="twitter:title" content={SITE_NAME} />
+        <meta property="twitter:description" content={SITE_DESCRIPTION} />
+        <meta property="twitter:image" content="/logo.jpeg" />
         <meta
           name="keywords"
           content={`${SITE_NAME} Logos nesriyyat, logosnesriyyat, logos publishing, logospublishing, 
@@ -34,13 +46,6 @@ function MyApp({ Component, pageProps }: { Component: any; pageProps: any }) {
         <meta name="msapplication-TileColor" content="#da532c" />
         <meta name="theme-color" content="#ffffff" />
         {/* favicon */}
-
-        {/* social network meta tag */}
-        <meta property="og:title" content={SITE_NAME} />
-        <meta property="og:description" content={SITE_DESCRIPTION} />
-        <meta property="og:image" content="/logo.jpeg" />
-        <meta name="twitter:card" content="/logo.jpeg" />
-        {/* social network meta tag */}
       </Head>
 
       <ChakraProvider>
