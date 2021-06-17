@@ -40,6 +40,7 @@ export default function PostDetail({ post }: Props) {
         <meta property="og:description" content={post.content} />
         <meta property="og:image" content={getFileUrl(post.cover_image.url)} />
         <meta name="twitter:card" content={getFileUrl(post.cover_image.url)} />
+        <meta name="keywords" content={`${post.title}, ${post.content.substring(0, 200).split(" ").join(",")}`} />
       </Head>
       <Container maxW="6xl" py="10">
         <img

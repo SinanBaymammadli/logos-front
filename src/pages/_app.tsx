@@ -17,6 +17,12 @@ function MyApp({ Component, pageProps }: { Component: any; pageProps: any }) {
 
         {/* general meta tags */}
         <meta name="description" content={SITE_DESCRIPTION} />
+        <meta
+          name="keywords"
+          content={`${SITE_NAME} Logos nesriyyat, logosnesriyyat, logos publishing, logospublishing, 
+          xarici dil oyren, ingilisce azerbaycanca kitablar, kitab, dil kitablari, 
+          rusca azerbaycanca kitablar, almanca azerbaycanca kitablar`}
+        />
         {/* general meta tags */}
 
         {/* favicon */}
