@@ -122,7 +122,7 @@ export default function BookDetail({ book, relatedBooks }: Props) {
           </Box>
         </Flex>
 
-        <Box pt="40">
+        <Box pt="20">
           <Heading pb="10">Oxşar kitablar</Heading>
           {relatedBooks.length > 0 ? (
             <SimpleGrid columns={[2, 3, 4, 5]} spacing="40px">
