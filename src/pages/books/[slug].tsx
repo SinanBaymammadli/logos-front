@@ -40,7 +40,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export default function BookDetail({ book, relatedBooks }: Props) {
   const [currentUrl, setCurrentUrl] = React.useState("");
-  console.log(relatedBooks);
 
   React.useEffect(() => {
     setCurrentUrl(window?.location?.href);
