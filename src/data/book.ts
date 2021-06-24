@@ -30,3 +30,9 @@ export async function getBook(slug: string): Promise<Book> {
   const res = await redaxios.get<any>(`${BASE_URL}/books?slug=${slug}`);
   return res.data[0];
 }
+
+export async function getRelatedBook(book: Book): Promise<Book[]> {
+  const { lang, level } = book;
+  const res = await redaxios.get<any>(`${BASE_URL}/books?lang=${encodeURIComponent(lang)}&level=${level}`);
+  return res.data.slice(0, 5);
+}

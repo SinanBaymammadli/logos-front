@@ -1,25 +1,29 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Box, Button, Container, Flex, Heading, Text } from "@chakra-ui/react";
+import { Box, Button, Container, Flex, Heading, SimpleGrid, Text } from "@chakra-ui/react";
 import { Carousel } from "react-responsive-carousel";
 import { GetStaticPaths, GetStaticProps } from "next";
 import React from "react";
 import Head from "next/head";
 import { Price } from "../../components/Price";
-import { Book, getAllBooks, getBook } from "../../data/book";
+import { Book, getAllBooks, getBook, getRelatedBook } from "../../data/book";
 import { getFileUrl } from "../../data/image";
 import { FaWhatsapp } from "react-icons/fa";
 import { PHONE_NUMBER } from "../../data/constants";
+import { BookCard } from "../../components/BookCard";
 
 interface Props {
   book: Book;
+  relatedBooks: Book[];
 }
 
 export const getStaticProps: GetStaticProps<Props> = async ({ params }) => {
   const book = await getBook(params?.slug?.toString() ?? "1");
+  const relatedBooks = await getRelatedBook(book);
 
   return {
     props: {
       book,
+      relatedBooks,
     },
   };
 };
@@ -34,8 +38,9 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: false };
 };
 
-export default function BookDetail({ book }: Props) {
+export default function BookDetail({ book, relatedBooks }: Props) {
   const [currentUrl, setCurrentUrl] = React.useState("");
+  console.log(relatedBooks);
 
   React.useEffect(() => {
     setCurrentUrl(window?.location?.href);
@@ -116,6 +121,17 @@ export default function BookDetail({ book }: Props) {
             <Text>{book.description}</Text>
           </Box>
         </Flex>
+
+        <Box pt="40">
+          <Heading pb="10">Oxşar kitablar</Heading>
+          {relatedBooks.length > 0 ? (
+            <SimpleGrid columns={[2, 3, 4, 5]} spacing="40px">
+              {relatedBooks.map((book) => {
+                return <BookCard key={book.id} book={book} />;
+              })}
+            </SimpleGrid>
+          ) : null}
+        </Box>
       </Container>
     </>
   );
