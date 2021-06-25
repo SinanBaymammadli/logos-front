@@ -121,16 +121,16 @@ export default function BookDetail({ book, relatedBooks }: Props) {
           </Box>
         </Flex>
 
-        <Box pt="20">
-          <Heading pb="10">Oxşar kitablar</Heading>
-          {relatedBooks.length > 0 ? (
+        {relatedBooks.length > 0 ? (
+          <Box pt="20">
+            <Heading pb="10">Oxşar kitablar</Heading>
             <SimpleGrid columns={[2, 3, 4, 5]} spacing="40px">
               {relatedBooks.map((book) => {
                 return <BookCard key={book.id} book={book} />;
               })}
             </SimpleGrid>
-          ) : null}
-        </Box>
+          </Box>
+        ) : null}
       </Container>
     </>
   );

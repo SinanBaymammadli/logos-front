@@ -32,13 +32,20 @@ export async function getBook(slug: string): Promise<Book> {
 }
 
 export async function getRelatedBook(book: Book): Promise<Book[]> {
-  const { lang, level } = book;
+  const { lang, level, id } = book;
   const res = await redaxios.get<any>(`${BASE_URL}/books?lang=${encodeURIComponent(lang)}`);
-  const books: Book[] = res.data;
+
+  const books = (res.data as Book[]).filter((b) => b.id !== id);
 
   if (books.length <= 5) {
     return books;
   }
 
-  return books.filter((book) => book.level === level).splice(0, 6);
+  const sameLevelBooks = books.filter((book) => book.level === level);
+
+  if (sameLevelBooks.length === 0) {
+    return books.slice(0, 5);
+  }
+
+  return sameLevelBooks.slice(0, 5);
 }
