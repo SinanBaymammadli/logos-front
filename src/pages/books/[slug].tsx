@@ -81,7 +81,7 @@ export default function BookDetail({ book, relatedBooks }: Props) {
         <meta property="og:image" content={getFileUrl(book.cover_image.url)} />
         <meta property="og:url" content={currentUrl} />
         <meta name="twitter:card" content={getFileUrl(book.cover_image.url)} />
-        <meta name="keywords" content={`${book.title}, ${book.description.split(" ").join(",")}`} />
+        <meta name="keywords" content={`${book.title}, ${book.description?.split(" ").join(",")}`} />
       </Head>
       <Container maxW="6xl" py="10">
         <Flex flexDirection={["column", "column", "row"]}>
